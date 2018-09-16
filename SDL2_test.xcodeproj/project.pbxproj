@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		762569C321471220002EBE2A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 762569C221471220002EBE2A /* main.cpp */; };
+		762569CB214712C8002EBE2A /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762569CA214712C8002EBE2A /* SDL2.framework */; };
+		762569CD214712D2002EBE2A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762569CC214712D2002EBE2A /* OpenGL.framework */; };
+		764601972147178600CF7CA8 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 764601962147178600CF7CA8 /* glad.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,12 @@
 /* Begin PBXFileReference section */
 		762569BF21471220002EBE2A /* SDL2_test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDL2_test; sourceTree = BUILT_PRODUCTS_DIR; };
 		762569C221471220002EBE2A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		762569CA214712C8002EBE2A /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		762569CC214712D2002EBE2A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		76460194214716C300CF7CA8 /* glad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
+		76460195214716F800CF7CA8 /* khrplatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
+		764601962147178600CF7CA8 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
+		764601982147204A00CF7CA8 /* test.ppm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.ppm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				762569CD214712D2002EBE2A /* OpenGL.framework in Frameworks */,
+				762569CB214712C8002EBE2A /* SDL2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +54,7 @@
 			children = (
 				762569C121471220002EBE2A /* SDL2_test */,
 				762569C021471220002EBE2A /* Products */,
+				762569C9214712C8002EBE2A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +69,22 @@
 		762569C121471220002EBE2A /* SDL2_test */ = {
 			isa = PBXGroup;
 			children = (
+				764601982147204A00CF7CA8 /* test.ppm */,
+				764601962147178600CF7CA8 /* glad.c */,
 				762569C221471220002EBE2A /* main.cpp */,
+				76460194214716C300CF7CA8 /* glad.h */,
+				76460195214716F800CF7CA8 /* khrplatform.h */,
 			);
 			path = SDL2_test;
+			sourceTree = "<group>";
+		};
+		762569C9214712C8002EBE2A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				762569CC214712D2002EBE2A /* OpenGL.framework */,
+				762569CA214712C8002EBE2A /* SDL2.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				762569C321471220002EBE2A /* main.cpp in Sources */,
+				764601972147178600CF7CA8 /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,7 +263,12 @@
 		762569C721471220002EBE2A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -245,7 +276,12 @@
 		762569C821471220002EBE2A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
