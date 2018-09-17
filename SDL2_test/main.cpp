@@ -46,8 +46,8 @@ float brighten_rate = 1;
 
 
 
-int screen_width = 400;
-int screen_height = 400;
+int screen_width = 700;
+int screen_height = 700;
 int window_w,window_h;
 float g_mouse_down = false;
 float g_clicked_x = -1;
@@ -320,7 +320,7 @@ int main(int argc, char *argv[]){
     float aspect = screen_width/(float)screen_height; //aspect ratio (needs to be updated if the window is resized)
     geo_fig square1(0.5f,0.0f,0.3f,0*PI/180,true,true,screen_width),square2(-0.5f,0.0f,0.3f,0*PI/180,true,false,screen_width);
     geo_fig triangle(0.0f,0.5f,0.3f,45*PI/180,false,false,screen_width);
-    geo_fig g_indicator(-0.7f,0.7f,0.1f,0*PI/180,true,false,screen_width);
+    geo_fig g_indicator(-0.7f,0.7f,0.5f,0*PI/180,true,false,screen_width);
     square1.updateVertices(); //set initial position of the square to match it's state
     if(Multi_square==1)
     {
@@ -360,10 +360,11 @@ int main(int argc, char *argv[]){
     
     
     int img_w, img_h;
+    int img_t_w, img_t_h,img_s_w, img_s_h,img_r_w, img_r_h;
+    unsigned char* img_data_Translate = loadImage(img_t_w,img_t_h,"Translation.ppm");
+    unsigned char* img_data_Scale = loadImage(img_s_w,img_s_h,"Scale.ppm");
+    unsigned char* img_data_Rotate = loadImage(img_r_w,img_r_h,"Rotation.ppm");
     unsigned char* img_data = loadImage(img_w,img_h,"goldy.ppm");
-    unsigned char* img_data_Translate = loadImage(img_w,img_h,"test.ppm");
-    unsigned char* img_data_Scale = loadImage(img_w,img_h,"brick.ppm");
-    unsigned char* img_data_Rotate = loadImage(img_w,img_h,"goldy.ppm");
     unsigned char* img_data_temp = new unsigned char[4*img_w*img_h];
     printf("Loaded Image of size (%d,%d)\n",img_w,img_h);
     //memset(img_data,0,4*img_w*img_h); //Load all zeros
@@ -530,32 +531,33 @@ int main(int argc, char *argv[]){
         else if((square1.g_bScale ||square2.g_bScale||triangle.g_bScale))
             action_index = 2;
         else if((square1.g_bRotate ||square2.g_bRotate||triangle.g_bRotate))
-            action_index = 2;
+            action_index = 3;
         // Clear the screen to white
         glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         
         switch (action_index) {
             case 1:
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img_w, img_h, 0, GL_RGBA, GL_UNSIGNED_BYTE, img_data_Translate);
+                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img_t_w, img_t_h, 0, GL_RGBA, GL_UNSIGNED_BYTE, img_data_Translate);
                 glGenerateMipmap(GL_TEXTURE_2D);
                 break;
             case 2:
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img_w, img_h, 0, GL_RGBA, GL_UNSIGNED_BYTE, img_data_Scale);
+                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img_s_w, img_s_h, 0, GL_RGBA, GL_UNSIGNED_BYTE, img_data_Scale);
                 glGenerateMipmap(GL_TEXTURE_2D);
                 break;
             case 3:
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img_w, img_h, 0, GL_RGBA, GL_UNSIGNED_BYTE, img_data_Rotate);
+                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img_r_w, img_r_h, 0, GL_RGBA, GL_UNSIGNED_BYTE, img_data_Rotate);
                 glGenerateMipmap(GL_TEXTURE_2D);
                 break;
             
             default:
                 break;
         }
-        glBufferData(GL_ARRAY_BUFFER, sizeof(g_indicator.vertices), g_indicator.vertices, GL_DYNAMIC_DRAW); //upload vertices to vbo
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4); //Draw the two triangles (4 vertices) making up the square
+        
         if(action_index!=0)
         {
+            glBufferData(GL_ARRAY_BUFFER, sizeof(g_indicator.vertices), g_indicator.vertices, GL_DYNAMIC_DRAW); //upload vertices to vbo
+            glDrawArrays(GL_TRIANGLE_STRIP, 0, 4); //Draw the two triangles (4 vertices) making up the square
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img_w, img_h, 0, GL_RGBA, GL_UNSIGNED_BYTE, img_data);
             glGenerateMipmap(GL_TEXTURE_2D);
         }
