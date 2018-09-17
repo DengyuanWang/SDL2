@@ -11,6 +11,7 @@
 		762569CB214712C8002EBE2A /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762569CA214712C8002EBE2A /* SDL2.framework */; };
 		762569CD214712D2002EBE2A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762569CC214712D2002EBE2A /* OpenGL.framework */; };
 		764601972147178600CF7CA8 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 764601962147178600CF7CA8 /* glad.c */; };
+		76B69535214F18C000DD12A7 /* geo_fig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B69533214F18C000DD12A7 /* geo_fig.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		76460195214716F800CF7CA8 /* khrplatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
 		764601962147178600CF7CA8 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
 		764601982147204A00CF7CA8 /* test.ppm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.ppm; sourceTree = "<group>"; };
+		76B69533214F18C000DD12A7 /* geo_fig.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = geo_fig.cpp; sourceTree = "<group>"; };
+		76B69534214F18C000DD12A7 /* geo_fig.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = geo_fig.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,8 @@
 				762569C221471220002EBE2A /* main.cpp */,
 				76460194214716C300CF7CA8 /* glad.h */,
 				76460195214716F800CF7CA8 /* khrplatform.h */,
+				76B69533214F18C000DD12A7 /* geo_fig.cpp */,
+				76B69534214F18C000DD12A7 /* geo_fig.hpp */,
 			);
 			path = SDL2_test;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				762569C321471220002EBE2A /* main.cpp in Sources */,
+				76B69535214F18C000DD12A7 /* geo_fig.cpp in Sources */,
 				764601972147178600CF7CA8 /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
